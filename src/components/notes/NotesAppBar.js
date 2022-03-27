@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { startSaveNotes } from '../../actions/notes'
+import { startSaveNotes } from '../../actions/notes';
+import moment from 'moment';
 
 export const NotesAppBar = () => {
 
@@ -13,14 +14,15 @@ export const NotesAppBar = () => {
        //console.log(active)
     }
 
+    const {date} = active;
+    console.log(date)
+    const noteDate = moment(date);
+
     return (
         <div className="notes__appbar">
-            <span>28 de agosto 2020</span>
+            <span>{noteDate.format('LL')}</span>
 
             <div>
-                <button className="btn">
-                    Picture
-                </button>
 
                 <button className="btn"
                         onClick={handleSave}>

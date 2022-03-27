@@ -1,6 +1,6 @@
 import React, { useEffect,useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { activeNote } from '../../actions/notes';
+import { activeNote, startDelete } from '../../actions/notes';
 import { useForm } from '../../hooks/useForm';
 import { NotesAppBar } from './NotesAppBar'
 
@@ -14,7 +14,7 @@ export const NoteScreen = () => {
     /*el useForm maneja su propio estado, por tanto no se actualiza las notas 
     Por tanto, tenmos que modificar el useForm*/
 
-    const {body,title} = formValues;//extraemos la info 
+    const {body,title, id} = formValues;//extraemos la info 
     //console.log(formValues);
 
     //useRef, selecciona el valor mutable, y no renderiza todo el componente si el valor cambia
@@ -38,6 +38,10 @@ export const NoteScreen = () => {
      dispatch(activeNote(formValues.id,{...formValues}));
       
     }, [formValues,dispatch]);
+
+    const handleDelete=()=>{
+        dispatch(startDelete(id))
+    }
     
 
     return (
@@ -78,6 +82,9 @@ export const NoteScreen = () => {
 
 
             </div>
+        
+            <button onClick={handleDelete} className='btn btn-danger'>
+            Delete</button>
 
         </div>
     )

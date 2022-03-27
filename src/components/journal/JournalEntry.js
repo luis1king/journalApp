@@ -34,14 +34,14 @@ export const JournalEntry = ({id,date,title,body,url}) => {
                 <p className="journal__entry-title">
                    {title}
                 </p>
-                <p className="journal__entry-content">R
+                <p className="journal__entry-content">
                   {body}
                 </p>
             </div>
 
             <div className="journal__entry-date-box">
                 <span>{noteDate.format('dddd')}</span>
-                <h4>{noteDate.format('l')}</h4>
+                <h4>{noteDate.format('L')}</h4>
             </div>
 
         </div>
